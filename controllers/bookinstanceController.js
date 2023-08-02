@@ -94,7 +94,7 @@ exports.bookinstance_create_post = [
 
 // Display BookInstance delete form on GET.
 exports.bookinstance_delete_get = asyncHandler(async (req, res, next) => {
-    // Get details of bookinstance
+    // Get details of book instance
     const bookinstance = await BookInstance.findById(req.params.id).exec();
   
     if (bookinstance === null) {
@@ -109,8 +109,10 @@ exports.bookinstance_delete_get = asyncHandler(async (req, res, next) => {
 });
 
 // Handle BookInstance delete on POST.
-exports.bookinstance_delete_post = asyncHandler(async (req, res, next) => {
-  res.send("NOT IMPLEMENTED: BookInstance delete POST");
+exports.bookinstance_delete_post = asyncHandler(async (req, res, next) => {  
+    // Delete object and redirect to the list of authors.
+    await BookInstance.findByIdAndRemove(req.body.bookinstanceid);
+    res.redirect("/catalog/bookinstances");
 });
 
 // Display BookInstance update form on GET.
