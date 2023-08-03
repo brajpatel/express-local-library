@@ -31,4 +31,12 @@ AuthorSchema.virtual('date_of_death_formatted').get(function() {
     return this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : 'present';
 })
 
+AuthorSchema.virtual('date_of_birth_update').get(function() {
+    return DateTime.fromJSDate(this.date_of_birth).toISODate();
+})
+
+AuthorSchema.virtual('date_of_death_update').get(function() {
+    return DateTime.fromJSDate(this.date_of_death).toISODate();
+})
+
 module.exports = mongoose.model('Author', AuthorSchema);
