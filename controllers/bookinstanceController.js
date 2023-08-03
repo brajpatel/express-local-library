@@ -172,7 +172,7 @@ exports.bookinstance_update_post = [
       const allBooks = await Book.find({}, "title").exec();
 
       res.render("bookinstance_form", {
-        title: "Create BookInstance",
+        title: "Update Book Instance",
         book_list: allBooks,
         selected_book: bookInstance.book._id,
         errors: errors.array(),
